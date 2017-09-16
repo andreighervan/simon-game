@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Simon</title>
+    <link type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<div class="container" ng-controller="MainController">
+
+    <div class="game-console">
+        <div class="circle" ng-click="cLog('circle')">
+            <div class="title text-center">
+                <h1>Simon</h1>
+            </div>
+            <div class="counter">
+                <input class="text-center" ng-model="counter" disabled></input>
+            </div>
+
+            <div class="start text-center">
+                <button class="btn btn-success" ng-click="startGame()" ng-disabled="disableStrict"></button>
+                <label>Start</label>
+            </div>
+
+            <div class="reset text-center">
+                <button class="btn btn-danger" ng-click="reset()"></button>
+                <label>Reset</label>
+            </div>
+
+            <div class="strict text-center">
+                <div class="active led-off" ng-class="{'led-on': strictMode}"></div>
+                <button class="btn btn-warning" ng-click="strictChange()" ng-disabled="disableStrict"></button>
+                <label>Strict</label>
+            </div>
+
+            <div class="onoff">
+                <span>Off</span>
+                <div class="powerbutton" ng-click="powerChange()">
+                    <div class="off-block" ng-hide="power"></div>
+                    <div class="on-block" ng-show="power"></div>
+                </div>
+                <span>On</span>
+            </div>
+
+        </div>
+        <div class="slot1 slot" ng-class="{'slot1-clicked': clicked1, 'unclickable': compMoving}" ng-click="changeColor(0)" ng-disabled="compMoving"></div>
+        <div class="slot2 slot" ng-class="{'slot2-clicked': clicked2, 'unclickable': compMoving}" ng-click="changeColor(1)" ng-disabled="compMoving"></div>
+        <div class="slot3 slot" ng-class="{'slot3-clicked': clicked3, 'unclickable': compMoving}" ng-click="changeColor(2)" ng-disabled="compMoving"></div>
+        <div class="slot4 slot" ng-class="{'slot4-clicked': clicked4, 'unclickable': compMoving}" ng-click="changeColor(3)" ng-disabled="compMoving"></div>
+    </div>
+
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</html>
